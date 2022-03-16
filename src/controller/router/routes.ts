@@ -7,21 +7,33 @@ const userRouter = Router();
 userRouter.get("/", async (req: Request, res: Response) => {
   const db = new UserDAO();
 
-  const user: string = String(req.query.user);
+  const name: string = String(req.query.name);
   const pass: string = String(req.query.pass);
 
-  const users = await db.getUser({ name: user, pass: pass });
+  const users = await db.getUser({ name: name, pass: pass });
   res.send(users);
 });
 
 userRouter.post("/create", async (req: Request, res: Response) => {
   const db = new UserDAO();
 
-  const user: string = String(req.body.user);
+  const name: string = String(req.body.name);
   const pass: string = String(req.body.pass);
 
-  const result = await db.createUser({ name: user, pass: pass });
+  const result = await db.createUser({ name: name, pass: pass });
   res.send(result);
+});
+
+userRouter.post("/login", async (req: Request, res: Response) => {
+  const db = new UserDAO();
+
+  const name: string = String(req.body.name);
+  const pass: string = String(req.body.pass);
+
+  const aux = await db.getUser({ name: name, pass: pass });
+
+  if (aux) res.sendStatus(200);
+  else res.sendStatus(401);
 });
 
 userRouter.get("/sightings", async (req: Request, res: Response) => {
