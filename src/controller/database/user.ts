@@ -39,8 +39,7 @@ export default class UserDAO {
   public async createUser({ name, pass }: UserType) {
     const user = new this.User({ name: name, pass: pass });
 
-    if(name != "" || pass!= "") {
-      
+    if(name != "" && pass != "") {
       user.save(function (err: any) {
         if (err) {
           console.log(err.data);
