@@ -21,7 +21,12 @@ userRouter.post("/create", async (req: Request, res: Response) => {
   const pass: string = String(req.body.pass);
 
   const result = await db.createUser({ name: name, pass: pass });
-  res.send(result);
+
+  console.log(result);
+  if (result == false) 
+    res.sendStatus(500);
+  else
+    res.sendStatus(200);
 });
 
 userRouter.post("/login", async (req: Request, res: Response) => {
