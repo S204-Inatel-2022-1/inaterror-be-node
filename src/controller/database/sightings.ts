@@ -14,7 +14,7 @@ export default class SightingsDAO {
     any,
     any
   >;
-  Sightings: any;
+  SightingsModel: any;
 
   constructor() {
     const connectionString: string = global.connectionString;
@@ -27,14 +27,14 @@ export default class SightingsDAO {
     });
 
     if (mongoose.models.sightings) {
-      this.Sightings = mongoose.model("sightings");
+      this.SightingsModel = mongoose.model("sightings");
     } else {
-      this.Sightings = mongoose.model("sightings", this.sightingsSchema);
+      this.SightingsModel = mongoose.model("sightings", this.sightingsSchema);
     }
   }
 
   public async getSightings() {
-    const result = await this.Sightings.find({});
+    const result = await this.SightingsModel.find({});
     if (result.length === 0) {
       return false;
     }
@@ -42,7 +42,7 @@ export default class SightingsDAO {
   }
 
   public async createSightings({ lat, lon, time }: SightingsType) {
-    const sightings = new this.Sightings({ lat: lat, lon: lon, time: time });
+    const sightings = new this.SightingsModel({ lat: lat, lon: lon, time: time });
 
     sightings.save(function (err: any) {
       if (err) {
