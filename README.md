@@ -6,7 +6,7 @@ Uma API para o projeto **InaTerror** para lidar com as entidades **User** e **Si
 
 ## UML
 
-![image](https://user-images.githubusercontent.com/61352086/167136324-8ba2a48e-93ad-4a00-9b25-6d4fd398d0a1.png)
+![image](https://user-images.githubusercontent.com/61352086/167137208-40f1d674-1937-44ed-bbf5-f0640d8562ef.png)
 
 
 ## Stack utilizada 🚀
