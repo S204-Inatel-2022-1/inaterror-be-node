@@ -1,6 +1,6 @@
 import { Router, Request, Response, query } from "express";
-import SightingsDAO from "../database/sightings";
-import UserDAO, { UserType } from "../database/user";
+import SightingsDAO from "../database/sightingDAO";
+import UserDAO, { UserType } from "../database/userDAO";
 
 const userRouter = Router();
 
