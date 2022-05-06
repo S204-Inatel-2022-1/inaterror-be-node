@@ -4,6 +4,9 @@
 
 Uma API para o projeto **InaTerror** para lidar com as entidades **User** e **Sightings**.
 
+## UML
+
+![image](https://user-images.githubusercontent.com/61352086/167136324-8ba2a48e-93ad-4a00-9b25-6d4fd398d0a1.png)
 
 
 ## Stack utilizada 🚀
