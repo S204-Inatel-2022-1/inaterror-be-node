@@ -41,7 +41,7 @@ export default class SightingsDAO {
     return result;
   }
 
-  public async postSightings({ lat, lon, time }: SightingsType) {
+  public async createSightings({ lat, lon, time }: SightingsType) {
     const sightings = new this.Sightings({ lat: lat, lon: lon, time: time });
 
     sightings.save(function (err: any) {
