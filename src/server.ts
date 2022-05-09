@@ -1,5 +1,5 @@
 import express from "express";
-import routes from "./controller/router";
+import routes from "./router";
 import cors from "cors";
 
 const app = express();
