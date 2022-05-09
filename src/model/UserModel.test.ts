@@ -27,7 +27,7 @@ describe("Testes UserModel", () => {
     await model.db.closeConnection();
 
     expect(response.result).toBe(true);
-    expect(response.message).toBe("valid user");
+    expect(response.message[0]).toBe("valid user");
   });
 
   test("Inserindo aparição dentro do usuario", async () => {
