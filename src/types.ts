@@ -1,6 +1,6 @@
 export type ResponseType = {
   result?: boolean;
-  message?: string;
+  message?: any;
   data?: any;
   error?: any;
 };
@@ -19,3 +19,4 @@ export type UserType = {
   pass: string;
   sighting?: SightingType[];
 };
+
