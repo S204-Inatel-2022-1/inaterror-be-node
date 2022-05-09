@@ -73,7 +73,6 @@ export default class UserDAO {
     )
       .then((data: any) => {
         console.log("data", data);
-        data = data[0];
         const user = {
           _id: data._id.toString(),
           name: data.name,
