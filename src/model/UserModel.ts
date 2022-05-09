@@ -1,7 +1,6 @@
 import { ResponseType, SightingType, UserType } from "../types";
 import UserDAO from "./database/userDAO";
 
-
 export default class UserModel {
   db = new UserDAO();
 
@@ -15,23 +14,22 @@ export default class UserModel {
     const validUser = name != "" && pass != "";
 
     const response: ResponseType = {
-      error: [],
+      message: [],
       result: undefined,
-      message: "",
     };
 
     if (!userNotExists) {
-      response.error.push("user already exists");
+      response.message.push("user already exists");
       response.result = false;
     }
 
     if (!validUser) {
-      response.error.push("name or pass is empty");
+      response.message.push("name or pass is empty");
       response.result = false;
     }
 
     if (userNotExists && validUser) {
-      response.message = "valid user";
+      response.message.push("valid user");
       response.result = true;
     }
 
@@ -53,17 +51,33 @@ export default class UserModel {
     }
   }
 
-  public async getUserByLogin({ name, pass }: UserType): Promise<UserType> {
-    return await this.db.getUserByLogin({ name, pass }).then((data: any) => {
-      data = data[0];
-      const user: UserType = {
-        _id: data._id.toString(),
-        name: data.name,
-        pass: data.pass,
-        sighting: data.sighting,
-      };
-      return user;
-    });
+  public async getUserByLogin({ name, pass }: UserType): Promise<ResponseType> {
+    const response: ResponseType = {
+      result: undefined,
+      message: [],
+    };
+    return await this.db
+      .getUserByLogin({ name, pass })
+      .then((data: any) => {
+        data = data[0];
+        console.log("data", data);
+        if (data === undefined) {
+          response.message.push("user not found");
+          response.result = false;
+        } else {
+          const user: UserType = {
+            _id: data._id.toString(),
+            name: data.name,
+            pass: data.pass,
+            sighting: data.sighting,
+          };
+          response.data = user;
+          response.result = true;
+          response.message.push("user found");
+        }
+        return response;
+      })
+      .catch((err: any) => err);
   }
 
   public async addSighting(
@@ -71,9 +85,8 @@ export default class UserModel {
     userId: string
   ): Promise<ResponseType> {
     const response: ResponseType = {
-      error: [],
       result: undefined,
-      message: "",
+      message: [],
     };
 
     await this.db
@@ -81,12 +94,12 @@ export default class UserModel {
       .then((data: any) => {
         response.data = data;
         response.result = true;
-        response.message = "sighting added";
+        response.message.push("sighting added");
       })
       .catch((err: any) => {
-        response.error.push(err);
+        response.message.push(err);
         response.result = false;
-        response.message = "sighting not added";
+        response.message.push("sighting not added");
       });
 
     return response;
