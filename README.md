@@ -1,4 +1,6 @@
 
+
+<p style="">
 <img 
     src="https://cdn.discordapp.com/attachments/840344823348985878/973355003735588885/Group_4.png" 
     style="width: 150px"
@@ -6,6 +8,7 @@
 
 # InaTerror Node API
 
+</p>
 
 
 Uma API para o projeto **InaTerror** para lidar com as entidades **User** e **Sightings**.
@@ -28,15 +31,13 @@ Uma API para o projeto **InaTerror** para lidar com as entidades **User** e **Si
 
 1. Clone o Projeto
     ```shell
-    $ cd pasta_de_projetos
-    $ git clone https://github.com/S204-Inatel-2022-1/inaterror-be-node.git
+    $ git clone https://github.com/S204-Inatel-2022-1/inaterror-be-node.git && cd inaterror-be-node
     ```
 
 
 
-2. Instalando as dependencias
+2. Instalando as dependências
     ```shell
-    $ cd inaterror-be-node
     $ npm i
     ```
 
