@@ -12,4 +12,4 @@ app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(router_1.default);
 app.get('/', (req, res) => res.send('Hello World!'));
-app.listen(port, () => console.log(`listening on port ${port}! 😎`));
+app.listen(port, () => console.log(`listening on port ${port}! 😎 20h36 20/06`));
