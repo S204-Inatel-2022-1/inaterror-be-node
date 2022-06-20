@@ -27,5 +27,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 exports.default = {
-    connectionString: (_a = process.env.CONNECTION_STR) !== null && _a !== void 0 ? _a : "",
+    connectionString: (_a = process.env.CONNECTION_STR) !== null && _a !== void 0 ? _a : '',
 };

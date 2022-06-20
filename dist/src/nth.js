@@ -1,33 +1,43 @@
 "use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
-    __setModuleDefault(result, mod);
-    return result;
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
 };
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const sightings_1 = __importDefault(require("./controller/database/sightings"));
-const dotenv = __importStar(require("dotenv"));
-dotenv.config();
-const db = new sightings_1.default();
-db.postSightings({ lat: "xsax", lon: "saxcas", time: "saxas" });
+const UserModel_1 = __importDefault(require("./model/UserModel"));
+const main = () => __awaiter(void 0, void 0, void 0, function* () {
+    const model = new UserModel_1.default();
+    // Const user: UserType  = {
+    //   name: "Robertaa",
+    //   pass: "monsa450PPaaa",
+    // };
+    // const sighting: SightingType = {
+    //   name: "Monsa",
+    //   img: "https://www.dicaspetz.com.br/wp-content/uploads/2019/01/como-cuidar-de-passarinho3.jpg",
+    //   rarity: "Common",
+    //   type: "Bird",
+    //   location: "New York",
+    // };
+    // await model.db.connect();
+    // const response = await model.postUser(user);
+    // console.log("response", response);
+    // await model.db.closeConnection();
+    yield model.db.connect();
+    const a = yield model.db.find({
+        $and: [
+            { name: 'RZkXPX2yjd' },
+            { sighting: { $elemMatch: { name: '82mJlUgRWH' } } },
+        ],
+    });
+    console.log('a', a);
+    yield model.db.closeConnection();
+});
+main();

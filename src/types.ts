@@ -19,3 +19,12 @@ export type UserType = {
   pass: string;
   sighting?: SightingType[];
 };
+
+export type OrbType = {
+  nome: string;
+  tipo: string;
+  localização: string;
+  raridade: string;
+  id: number;
+  invert: number;
+};

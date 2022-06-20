@@ -15,7 +15,7 @@
     "plugins": [
         "@typescript-eslint"
     ],
-    "ignorePatterns": ["environment.d.ts"],
+    "ignorePatterns": ["environment.d.ts", "*.ts"],
     "rules": {
     }
 }
